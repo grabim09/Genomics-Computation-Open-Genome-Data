@@ -55,7 +55,7 @@ def fasta_parser(file):
 #         print("Header:", header[i])
 #         print("Sequence:", sequence[i])
     sequence_count = count
-    st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
+    st.write("**Sequence amount inside the chosen file: **" + str(sequence_count) + " Sequence")
     st.divider()
     for i in range(sequence_count):
         st.write("Header {}: {}".format(i, header[i]))
@@ -87,7 +87,6 @@ def countNucs(instring):
 def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Open Genome Data")
     fasta_parser(file_reader())
-    countNucs(sequence[sequence_count-1])
     
 if __name__ == "__main__":
     main()
