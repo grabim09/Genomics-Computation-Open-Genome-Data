@@ -55,13 +55,13 @@ def fasta_parser(file):
 #         print("Header:", header[i])
 #         print("Sequence:", sequence[i])
     sequence_count = count
-    st.write("Sequence Amount: " + str(sequence_count) + " Sequence")
+    st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
     for i in range(sequence_count):
         st.write("Header {}: {}".format(i, header[i]))
         st.write("Sequence {}: {}...{}".format(i, sequence[i][0:9], sequence[i][-10:-1]))
 
 
-# In[126]:
+# In[128]:
 
 
 def countNucs(instring):
@@ -70,7 +70,7 @@ def countNucs(instring):
     g = instring.upper().count('G') 
     a = instring.upper().count('A')
     t = instring.upper().count('T')
-    st.write('C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t))
+    st.write("Frequency of each nucleotide: C = {}, G = {}, A = {}, T = {}".format(c, g, a, t))
 #     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
