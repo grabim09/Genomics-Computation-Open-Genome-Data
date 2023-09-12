@@ -9,14 +9,19 @@ import pandas as pd
 import streamlit as st
 
 
-# In[61]:
+# In[69]:
+
+
+sequence_count = 0
+header = []
+sequence = []
+
+
+# In[73]:
 
 
 def fasta_parser(file):
-    sequence_count = 0
-    header = []
-    sequence = []
-
+    count = 0
     with open(file, 'r') as fasta_file:
         seq = ""
         for line in fasta_file:
@@ -26,7 +31,8 @@ def fasta_parser(file):
                 if seq:
                     sequence.append(seq)
                 seq = ""
-                sequence_count += 1
+#                 sequence_count += 1
+                count += 1
             else:
                 seq += line
         if seq:
@@ -35,13 +41,14 @@ def fasta_parser(file):
 #     for i in range(sequence_count):
 #         print("Header:", header[i])
 #         print("Sequence:", sequence[i])
+    sequence_count = count
     st.write("Sequence Amount: " + str(sequence_count) + " Sequence")
     for i in range(sequence_count):
-        st.write("Header{}: {}".format(i, header[i]))
-        st.write("Sequence{}: {}".format(i, sequence[i]))
+        st.write("Header {}: {}".format(i, header[i]))
+        st.write("Sequence {}: {}".format(i, sequence[i]))
 
 
-# In[62]:
+# In[74]:
 
 
 def countNucs(instring):
@@ -51,17 +58,17 @@ def countNucs(instring):
     a = instring.upper().count('A')
     t = instring.upper().count('T')
     st.write('C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t))
-    return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
+#     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
-# In[65]:
+# In[75]:
 
 
 def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Homework 1")
 #     st.divider()
     fasta_parser("M14707.1[1..7478].fa")
-    countNucs(sequence[0])
+    countNucs(sequence[sequence_count-1])
     
 if __name__ == "__main__":
     main()
