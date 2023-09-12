@@ -10,13 +10,14 @@ import streamlit as st
 import os
 
 
-# In[102]:
+# In[107]:
 
 
 def file_reader():
     included_extensions = ['fasta','fa']
     file_names = [fn for fn in os.listdir()
               if any(fn.endswith(ext) for ext in included_extensions)]
+    file_names.sort()
     st.selectbox("Please select available genome data below!",file_names)
 
 
