@@ -30,7 +30,7 @@ def file_reader():
     return chosen_file
 
 
-# In[158]:
+# In[161]:
 
 
 def countNucs(seq_num,sequence_string):
@@ -39,7 +39,7 @@ def countNucs(seq_num,sequence_string):
     g = sequence_string.upper().count('G') 
     a = sequence_string.upper().count('A')
     t = sequence_string.upper().count('T')
-    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format((seq_num+1), c, g, a, t))
+    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format(seq_num, c, g, a, t))
 
 
 # In[159]:
