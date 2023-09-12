@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[155]:
+# In[162]:
 
 
 import streamlit as st
@@ -10,30 +10,30 @@ import numpy as np
 import pandas as pd
 
 
-# In[156]:
+# In[163]:
 
 
-included_extensions = ['fasta','fa']
+allowed_extensions = ['fasta','fa']
 sequence_count = 0
 header = []
 sequence = []
 
 
-# In[157]:
+# In[164]:
 
 
 def file_reader():
     file_names = [fn for fn in os.listdir()
-              if any(fn.endswith(ext) for ext in included_extensions)]
+              if any(fn.endswith(ext) for ext in allowed_extensions)]
     file_names.sort()
     chosen_file = st.selectbox("Please select available genome data below!",file_names)
     return chosen_file
 
 
-# In[161]:
+# In[165]:
 
 
-def countNucs(seq_num,sequence_string):
+def count_nucleotide(seq_num,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
     c = sequence_string.upper().count('C')
     g = sequence_string.upper().count('G') 
@@ -42,7 +42,7 @@ def countNucs(seq_num,sequence_string):
     st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format(seq_num, c, g, a, t))
 
 
-# In[159]:
+# In[166]:
 
 
 def fasta_parser(file):
@@ -66,11 +66,11 @@ def fasta_parser(file):
     for i in range(sequence_count):
         st.divider()
         st.write("Header {}: {}".format((i+1), header[i]))
-        st.write("Sequence {}: {}...{}".format((i+1), sequence[i][0:9], sequence[i][-10:-1]))
-        countNucs((i+1), sequence[i])
+        st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
+        count_nucleotide((i+1), sequence[i])
 
 
-# In[160]:
+# In[167]:
 
 
 def main():
