@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[122]:
+# In[130]:
 
 
-import numpy as np
-import pandas as pd
 import streamlit as st
 import os
+import numpy as np
+import pandas as pd
 
 
-# In[123]:
+# In[131]:
 
 
 included_extensions = ['fasta','fa']
@@ -19,7 +19,7 @@ header = []
 sequence = []
 
 
-# In[124]:
+# In[133]:
 
 
 def file_reader():
@@ -30,7 +30,7 @@ def file_reader():
     return chosen_file
 
 
-# In[125]:
+# In[134]:
 
 
 def fasta_parser(file):
@@ -59,9 +59,14 @@ def fasta_parser(file):
     for i in range(sequence_count):
         st.write("Header {}: {}".format(i, header[i]))
         st.write("Sequence {}: {}...{}".format(i, sequence[i][0:9], sequence[i][-10:-1]))
+        c = sequence[i].upper().count('C')
+        g = sequence[i].upper().count('G') 
+        a = sequence[i].upper().count('A')
+        t = sequence[i].upper().count('T')
+        st.write("Frequency of each nucleotide: C = {}, G = {}, A = {}, T = {}".format(c, g, a, t))
 
 
-# In[128]:
+# In[135]:
 
 
 def countNucs(instring):
@@ -74,7 +79,7 @@ def countNucs(instring):
 #     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
-# In[127]:
+# In[137]:
 
 
 def main():
