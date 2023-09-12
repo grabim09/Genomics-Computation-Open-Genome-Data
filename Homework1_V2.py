@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[101]:
+# In[116]:
 
 
 import numpy as np
@@ -10,26 +10,27 @@ import streamlit as st
 import os
 
 
-# In[107]:
+# In[117]:
 
 
-def file_reader():
-    included_extensions = ['fasta','fa']
-    file_names = [fn for fn in os.listdir()
-              if any(fn.endswith(ext) for ext in included_extensions)]
-    file_names.sort()
-    st.selectbox("Please select available genome data below!",file_names)
-
-
-# In[103]:
-
-
+included_extensions = ['fasta','fa']
 sequence_count = 0
 header = []
 sequence = []
 
 
-# In[104]:
+# In[118]:
+
+
+def file_reader():
+    file_names = [fn for fn in os.listdir()
+              if any(fn.endswith(ext) for ext in included_extensions)]
+    file_names.sort()
+    chosen_file = st.selectbox("Please select available genome data below!",file_names)
+    return chosen_file
+
+
+# In[119]:
 
 
 def fasta_parser(file):
@@ -60,7 +61,7 @@ def fasta_parser(file):
         st.write("Sequence {}: {}".format(i, sequence[i]))
 
 
-# In[105]:
+# In[120]:
 
 
 def countNucs(instring):
@@ -73,14 +74,12 @@ def countNucs(instring):
 #     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
-# In[106]:
+# In[121]:
 
 
 def main():
-    st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Homework 1")
-    file_reader()
-#     st.divider()
-    fasta_parser("M14707.1[1..7478].fa")
+    st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Open Genome Data")
+    fasta_parser(file_reader())
     countNucs(sequence[sequence_count-1])
     
 if __name__ == "__main__":
