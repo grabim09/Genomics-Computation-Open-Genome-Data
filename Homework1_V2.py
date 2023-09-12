@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[48]:
+# In[60]:
 
 
 import numpy as np
@@ -9,7 +9,7 @@ import pandas as pd
 import streamlit as st
 
 
-# In[56]:
+# In[61]:
 
 
 def fasta_parser(file):
@@ -41,7 +41,7 @@ def fasta_parser(file):
         st.write("Sequence{}: {}".format(i, sequence[i]))
 
 
-# In[57]:
+# In[62]:
 
 
 def countNucs(instring):
@@ -54,14 +54,17 @@ def countNucs(instring):
     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
-# In[58]:
+# In[65]:
 
 
 def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Homework 1")
-    st.divider()
+#     st.divider()
     fasta_parser("M14707.1[1..7478].fa")
     countNucs(sequence[0])
+    
+if __name__ == "__main__":
+    main()
 
 
 # In[ ]:
