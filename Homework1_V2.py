@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[143]:
+# In[149]:
 
 
 import streamlit as st
@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 
-# In[144]:
+# In[150]:
 
 
 included_extensions = ['fasta','fa']
@@ -19,7 +19,7 @@ header = []
 sequence = []
 
 
-# In[145]:
+# In[151]:
 
 
 def file_reader():
@@ -30,19 +30,19 @@ def file_reader():
     return chosen_file
 
 
-# In[146]:
+# In[152]:
 
 
-def countNucs(sequence_number,sequence_string):
+def countNucs(seq_num,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
     c = sequence_string.upper().count('C')
     g = sequence_string.upper().count('G') 
     a = sequence_string.upper().count('A')
     t = sequence_string.upper().count('T')
-    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format((i+1), c, g, a, t))
+    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format((seq_number+1), c, g, a, t))
 
 
-# In[147]:
+# In[153]:
 
 
 def fasta_parser(file):
@@ -70,7 +70,7 @@ def fasta_parser(file):
         countNucs((i+1), sequence[i])
 
 
-# In[148]:
+# In[154]:
 
 
 def main():
