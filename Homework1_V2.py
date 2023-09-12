@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[130]:
+# In[143]:
 
 
 import streamlit as st
@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 
-# In[131]:
+# In[144]:
 
 
 included_extensions = ['fasta','fa']
@@ -19,7 +19,7 @@ header = []
 sequence = []
 
 
-# In[133]:
+# In[145]:
 
 
 def file_reader():
@@ -30,7 +30,19 @@ def file_reader():
     return chosen_file
 
 
-# In[142]:
+# In[146]:
+
+
+def countNucs(sequence_number,sequence_string):
+    # will count upper and lower case sequences, if do not want lower case remove .upper()
+    c = sequence_string.upper().count('C')
+    g = sequence_string.upper().count('G') 
+    a = sequence_string.upper().count('A')
+    t = sequence_string.upper().count('T')
+    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format((i+1), c, g, a, t))
+
+
+# In[147]:
 
 
 def fasta_parser(file):
@@ -44,45 +56,21 @@ def fasta_parser(file):
                 if seq:
                     sequence.append(seq)
                 seq = ""
-#                 sequence_count += 1
                 count += 1
             else:
                 seq += line
         if seq:
             sequence.append(seq)
-#     print(str(sequence_count) + " Sequence")
-#     for i in range(sequence_count):
-#         print("Header:", header[i])
-#         print("Sequence:", sequence[i])
     sequence_count = count
-    st.write("**Sequence amount inside the chosen file: **" + str(sequence_count) + " Sequence")
-#     st.divider()
+    st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
     for i in range(sequence_count):
         st.divider()
-        st.write("Header {}: {}".format(i, header[i]))
-        st.write("Sequence {}: {}...{}".format(i, sequence[i][0:9], sequence[i][-10:-1]))
-        c = sequence[i].upper().count('C')
-        g = sequence[i].upper().count('G') 
-        a = sequence[i].upper().count('A')
-        t = sequence[i].upper().count('T')
-        st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format(i, c, g, a, t))
-#         st.divider()
+        st.write("Header {}: {}".format((i+1), header[i]))
+        st.write("Sequence {}: {}...{}".format((i+1), sequence[i][0:9], sequence[i][-10:-1]))
+        countNucs((i+1), sequence[i])
 
 
-# In[135]:
-
-
-def countNucs(instring):
-    # will count upper and lower case sequences, if do not want lower case remove .upper()
-    c = instring.upper().count('C')
-    g = instring.upper().count('G') 
-    a = instring.upper().count('A')
-    t = instring.upper().count('T')
-    st.write("Frequency of each nucleotide: C = {}, G = {}, A = {}, T = {}".format(c, g, a, t))
-#     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
-
-
-# In[137]:
+# In[148]:
 
 
 def main():
