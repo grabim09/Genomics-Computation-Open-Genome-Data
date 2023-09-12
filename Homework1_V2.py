@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[116]:
+# In[122]:
 
 
 import numpy as np
@@ -10,7 +10,7 @@ import streamlit as st
 import os
 
 
-# In[117]:
+# In[123]:
 
 
 included_extensions = ['fasta','fa']
@@ -19,7 +19,7 @@ header = []
 sequence = []
 
 
-# In[118]:
+# In[124]:
 
 
 def file_reader():
@@ -30,7 +30,7 @@ def file_reader():
     return chosen_file
 
 
-# In[119]:
+# In[125]:
 
 
 def fasta_parser(file):
@@ -58,10 +58,10 @@ def fasta_parser(file):
     st.write("Sequence Amount: " + str(sequence_count) + " Sequence")
     for i in range(sequence_count):
         st.write("Header {}: {}".format(i, header[i]))
-        st.write("Sequence {}: {}".format(i, sequence[i]))
+        st.write("Sequence {}: {}...{}".format(i, sequence[i][0:9], sequence[i][-10:-1]))
 
 
-# In[120]:
+# In[126]:
 
 
 def countNucs(instring):
@@ -74,7 +74,7 @@ def countNucs(instring):
 #     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
-# In[121]:
+# In[127]:
 
 
 def main():
