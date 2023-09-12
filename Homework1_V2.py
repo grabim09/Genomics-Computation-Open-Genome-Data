@@ -61,11 +61,14 @@ def countNucs(instring):
 #     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
-# In[75]:
+# In[76]:
 
 
 def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Homework 1")
+    st.selectbox(
+        "Please select available genome data below!",
+        ("A", "B", "Mobile phone"))
 #     st.divider()
     fasta_parser("M14707.1[1..7478].fa")
     countNucs(sequence[sequence_count-1])
