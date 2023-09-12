@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[149]:
+# In[155]:
 
 
 import streamlit as st
@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 
-# In[150]:
+# In[156]:
 
 
 included_extensions = ['fasta','fa']
@@ -19,7 +19,7 @@ header = []
 sequence = []
 
 
-# In[151]:
+# In[157]:
 
 
 def file_reader():
@@ -30,7 +30,7 @@ def file_reader():
     return chosen_file
 
 
-# In[152]:
+# In[158]:
 
 
 def countNucs(seq_num,sequence_string):
@@ -39,10 +39,10 @@ def countNucs(seq_num,sequence_string):
     g = sequence_string.upper().count('G') 
     a = sequence_string.upper().count('A')
     t = sequence_string.upper().count('T')
-    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format((seq_number+1), c, g, a, t))
+    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format((seq_num+1), c, g, a, t))
 
 
-# In[153]:
+# In[159]:
 
 
 def fasta_parser(file):
@@ -70,7 +70,7 @@ def fasta_parser(file):
         countNucs((i+1), sequence[i])
 
 
-# In[154]:
+# In[160]:
 
 
 def main():
