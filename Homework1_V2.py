@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[82]:
+# In[101]:
 
 
 import numpy as np
@@ -10,27 +10,17 @@ import streamlit as st
 import os
 
 
-# In[83]:
+# In[102]:
 
 
-os.listdir()
-
-
-# In[84]:
-
-
-included_extensions = ['fasta','fa']
-
-
-# In[85]:
-
-
-file_names = [fn for fn in os.listdir()
+def file_reader():
+    included_extensions = ['fasta','fa']
+    file_names = [fn for fn in os.listdir()
               if any(fn.endswith(ext) for ext in included_extensions)]
-file_names
+    st.selectbox("Please select available genome data below!",file_names)
 
 
-# In[86]:
+# In[103]:
 
 
 sequence_count = 0
@@ -38,7 +28,7 @@ header = []
 sequence = []
 
 
-# In[87]:
+# In[104]:
 
 
 def fasta_parser(file):
@@ -62,14 +52,14 @@ def fasta_parser(file):
 #     for i in range(sequence_count):
 #         print("Header:", header[i])
 #         print("Sequence:", sequence[i])
-    sequence_count += count
+    sequence_count = count
     st.write("Sequence Amount: " + str(sequence_count) + " Sequence")
     for i in range(sequence_count):
         st.write("Header {}: {}".format(i, header[i]))
         st.write("Sequence {}: {}".format(i, sequence[i]))
 
 
-# In[88]:
+# In[105]:
 
 
 def countNucs(instring):
@@ -82,14 +72,12 @@ def countNucs(instring):
 #     return 'C = {}, G = {}, A = {}, T = {}'.format(c, g, a, t)
 
 
-# In[89]:
+# In[106]:
 
 
 def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Homework 1")
-    st.selectbox(
-        "Please select available genome data below!",
-        ("A", "B", "Mobile phone"))
+    file_reader()
 #     st.divider()
     fasta_parser("M14707.1[1..7478].fa")
     countNucs(sequence[sequence_count-1])
