@@ -30,7 +30,7 @@ def file_reader():
     return chosen_file
 
 
-# In[141]:
+# In[142]:
 
 
 def fasta_parser(file):
@@ -56,8 +56,9 @@ def fasta_parser(file):
 #         print("Sequence:", sequence[i])
     sequence_count = count
     st.write("**Sequence amount inside the chosen file: **" + str(sequence_count) + " Sequence")
-    st.divider()
+#     st.divider()
     for i in range(sequence_count):
+        st.divider()
         st.write("Header {}: {}".format(i, header[i]))
         st.write("Sequence {}: {}...{}".format(i, sequence[i][0:9], sequence[i][-10:-1]))
         c = sequence[i].upper().count('C')
@@ -65,7 +66,7 @@ def fasta_parser(file):
         a = sequence[i].upper().count('A')
         t = sequence[i].upper().count('T')
         st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format(i, c, g, a, t))
-        st.divider()
+#         st.divider()
 
 
 # In[135]:
