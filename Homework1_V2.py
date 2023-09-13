@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[7]:
 
 
 import streamlit as st
 import os
-import numpy as np
-import pandas as pd
 
 
-# In[2]:
+# In[8]:
 
 
 allowed_extensions = ['fasta','fa']
@@ -19,7 +17,7 @@ header = []
 sequence = []
 
 
-# In[3]:
+# In[9]:
 
 
 def file_reader():
@@ -30,7 +28,7 @@ def file_reader():
     return chosen_file
 
 
-# In[4]:
+# In[10]:
 
 
 def count_nucleotide(seq_num,sequence_string):
@@ -42,7 +40,7 @@ def count_nucleotide(seq_num,sequence_string):
     st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format(seq_num, c, g, a, t))
 
 
-# In[5]:
+# In[11]:
 
 
 def fasta_parser(file):
@@ -71,7 +69,7 @@ def fasta_parser(file):
         count_nucleotide((i+1), sequence[i])
 
 
-# In[6]:
+# In[12]:
 
 
 def main():
