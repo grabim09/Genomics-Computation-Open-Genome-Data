@@ -70,6 +70,16 @@ def fasta_parser(file):
         count_nucleotide((i+1), sequence[i])
 
 
+# In[ ]:
+
+
+def sequence_chart():
+    fig = plt.figure() 
+    plt.plot([1, 2, 3, 4, 5]) 
+
+    st.pyplot(fig)
+
+
 # In[12]:
 
 
