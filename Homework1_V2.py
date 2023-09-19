@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
+# In[1]:
 
 
 import os
-import matplotlib.plotly as plt
+import matplotlib.pyplot as plt
 import streamlit as st
 
 
