@@ -87,6 +87,7 @@ def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Open Genome Data")
     st.divider()
     fasta_parser(file_reader())
+    sequence_chart()
     
 if __name__ == "__main__":
     main()
