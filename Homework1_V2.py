@@ -18,6 +18,7 @@ header = []
 sequence = []
 nbn = ['G', 'C', 'A', 'T']
 nbc = [0]*4
+nbf = [0]*4
 
 
 # In[9]:
@@ -34,15 +35,19 @@ def file_reader():
 # In[10]:
 
 
-def count_nucleotide(seq_num,sequence_string):
+def count_nucleotide(seq_num,sequence_count,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
     text = "Frequency of each nucleotide in sequence {}:".format(seq_num)
     for i in range(4):
         nbc[i] = sequence_string.upper().count(nbn[i])
+        nbf[i] = float(nbc[i]/sequence_count)
+        nbt = "{} = {} ({:.2f}%)".format(nbn[i], nbc[i], nbf[i])
         if i == 3:
-            nbt = " and {} = {}".format(nbn[i], nbc[i])
+            nbt = " and " + nbt
+#             nbt = " and {} = {}".format(nbn[i], nbc[i])
         else:
-            nbt = " {} = {},".format(nbn[i], nbc[i])
+            nbt = " " + nbt + ","
+#             nbt = " {} = {},".format(nbn[i], nbc[i])
         text = text + nbt
     st.write(text)
 #     C = sequence_string.upper().count('C')
@@ -86,8 +91,10 @@ def fasta_parser(file):
 
 
 def sequence_chart():
-    fig = plt.figure(figsize=(8,4)) 
+    fig = plt.figure(figsize=(8,3)) 
     plt.barh(nbn, nbc)
+    plt.xlabel('Nitrogen Base Count')
+    plt.ylabel('Nitrogen Base Code')
     st.pyplot(fig)
 
 
