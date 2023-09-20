@@ -135,19 +135,19 @@ def fasta_parser(file):
     else:
         i = 0
         j = 0
-    window = st.radio("Choose window type",["Quarter", "Percentage", "Documentary :movie_camera:"],
-    captions = ["Laugh out loud.", "Get the popcorn.", "Never stop learning."])
+#     window = st.radio("Choose window type",["Quarter", "Percentage", "Documentary :movie_camera:"],
+#     captions = ["Laugh out loud.", "Get the popcorn.", "Never stop learning."])
     while i <= j:
         st.divider()
         sequence_info(i)    
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
         i += 1
-    nbwc = [0]*len(sequence[i])
-    gcc = [0]*len(sequence[i])
-    gcf = [0]*len(sequence[i])
-    atc = [0]*len(sequence[i])
-    atf = [0]*len(sequence[i])
+    nbwc = [0]*len(sequence[0])
+    gcc = [0]*len(sequence[0])
+    gcf = [0]*len(sequence[0])
+    atc = [0]*len(sequence[0])
+    atf = [0]*len(sequence[0])
     win_len = 11
     left = round((win_len - 1) / 2)
     right = left
@@ -156,9 +156,9 @@ def fasta_parser(file):
         l = 0 if m - left else m - left
         r = n if m + right else m + right
         c = r - l + 1
-        gcc[m] = sequence_string.upper().count(nbn[0],m,r) + sequence_string.upper().count(nbn[1],m,r)
+        gcc[m] = sequence[0].upper().count(nbn[0],m,r) + sequence[0].upper().count(nbn[1],m,r)
         gcf[m] = float((gcc[m]/c)*100)
-        atc[m] = sequence_string.upper().count(nbn[2],m,r) + sequence_string.upper().count(nbn[3],m,r)
+        atc[m] = sequence[0].upper().count(nbn[2],m,r) + sequence[0].upper().count(nbn[3],m,r)
         atf[m] = float((atc[m]/c)*100)
     fig = plt.figure(figsize=(16,2)) 
     plt.plot(nbn, nbc)
