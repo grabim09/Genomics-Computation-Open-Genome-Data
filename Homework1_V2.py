@@ -110,6 +110,8 @@ def window_frequency(seq_num):
     left = round((win_len - 1) / 2)
     right = left
     n = len(sequence[seq_num])
+    c = [0]*4
+    f = [0]*4
     wc = []
     wf = []
     wgcc = []
