@@ -100,7 +100,6 @@ def fasta_parser(file):
         if seq:
             sequence.append(seq)
     sequence_count = count
-    st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
 #     col1, col2 = st.columns([2, 3])
 #     with col1:
 #         st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
@@ -108,18 +107,20 @@ def fasta_parser(file):
 #     with col2:
 #         i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
 #   Show only one sequence
-    st.write(sequence_count == 1)
-    st.write(if sequence_count == 1)
-    if sequence_count > 1:
-        col1, col2 = st.columns([1, 3])
-        
-        with col1:
-#             st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
-            mult = st.checkbox("Show all sequence", value = False)
-        with col2:
-            i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
-    else:
-        i = 0
+    col1, col2 = st.column([3,1])
+    with col1:
+        st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
+    with col2:
+        mult = st.checkbox("Show all sequence", value = False, disabled = True if sequence_count == 1 else False)
+    i = st.slider("Choose sequence", 1, sequence_count, value = 1, disabled = mult) - 1
+#     if sequence_count > 1:
+#         col1, col2 = st.columns([1, 3])
+#         with col1:
+#             mult = st.checkbox("Show all sequence", value = False)
+#         with col2:
+#             i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
+#     else:
+#         i = 0
     st.divider()
     st.write("Header {}: {}".format((i+1), header[i]))
     st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
