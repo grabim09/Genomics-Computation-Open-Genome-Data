@@ -136,6 +136,7 @@ def fasta_parser(file):
         sequence_info(i)    
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
+        i += 1
 
 
 # In[12]:
