@@ -26,8 +26,7 @@ nbf = [0]*4
 
 
 def file_reader():
-    file_names = [fn for fn in os.listdir()
-              if any(fn.endswith(ext) for ext in allowed_extensions)]
+    file_names = [fn for fn in os.listdir() if any(fn.endswith(ext) for ext in allowed_extensions)]
     file_names.sort()
     chosen_file = st.selectbox("Please select available genome data below!",file_names)
     return chosen_file
@@ -37,10 +36,10 @@ def file_reader():
 
 
 def count_nitrogen_base(seq_num,sequence_length,sequence_string):
-    # will count upper and lower case sequences, if do not want lower case remove .upper()
 #     text = "Frequency of each nitrogen base in sequence {}:".format(seq_num)
     text = "Nitrogen base frequency:"
     for i in range(4):
+#         will count upper and lower case sequences, if do not want lower case remove .upper()
         nbc[i] = sequence_string.upper().count(nbn[i])
         nbf[i] = float(nbc[i]/sequence_length)
         nbt = "{} = {} ({:.2f}%)".format(nbn[i], nbc[i], nbf[i])
@@ -72,7 +71,8 @@ def sequence_chart():
         num2 = num%10
         num = math.floor(num/10)
         i += 1
-    max_x = ((num*10)+num2+3)*(10**(i-1))
+#     max_x = (num*10)*(10**(i))
+    max_x = ((num*10)+num2+5)*(10**(i-1))
 #     st.write("{} {} {} {}".format(num, num2, i, max_x))
     plt.xlim(0, max_x)
     plt.xlabel('Nitrogen Base Count')
@@ -106,7 +106,7 @@ def fasta_parser(file):
         st.write("Header {}: {}".format((i+1), header[i]))
 #         st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
 #         st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
-        st.write("Sequence {}: {}......{} with length of {}".
+        st.write("Sequence {}: {}......{} with total length of {}".
                  format((i+1), sequence[i][0:11], sequence[i][-12:-1], len(sequence[i])))
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
@@ -119,7 +119,6 @@ def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Open Genome Data")
     st.divider()
     fasta_parser(file_reader())
-#     sequence_chart()
     
 if __name__ == "__main__":
     main()
