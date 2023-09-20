@@ -72,12 +72,17 @@ def sequence_chart():
     i = 0
     while (num > 9):
 #         print( number % 10);
-        num = num / 10
+        num2 = num%10
+        num = mat.floor(num/10)
         i += 1
-    num = math.floor(num) + 1
-    st.write(math.floor(num))
-    st.write(i)
-    plt.xlim(0, num*(10**i))
+    if num2 <= 5:
+        max_x = ((num*10)+5)*(10**(i-1))
+    else:
+        max_x = (num+1)*(10**i)
+#     max_x = (num+1)*(10**i)
+#     st.write(math.floor(num))
+#     st.write(i)
+    plt.xlim(0, max_x)
     plt.xlabel('Nitrogen Base Count')
     plt.ylabel('Nitrogen Base Code')
     st.pyplot(fig)
