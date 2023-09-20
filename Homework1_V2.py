@@ -36,8 +36,8 @@ def file_reader():
 
 
 def count_nitrogen_base(seq_num,sequence_length,sequence_string):
-#     text = "Frequency of each nitrogen base in sequence {}:".format(seq_num)
-    text = "Nitrogen base frequency:"
+    text = "Frequency of each nitrogen base in sequence {}:".format(seq_num)
+#     text = "Nitrogen base frequency:"
     for i in range(4):
 #         will count upper and lower case sequences, if do not want lower case remove .upper()
         nbc[i] = sequence_string.upper().count(nbn[i])
