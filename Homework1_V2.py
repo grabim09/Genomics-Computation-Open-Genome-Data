@@ -151,7 +151,7 @@ def fasta_parser(file):
     win_len = 11
     left = round((win_len - 1) / 2)
     right = left
-    n = len(sequence[i])
+    n = len(sequence[0])
     for m in range(n):
         l = 0 if m - left else m - left
         r = n if m + right else m + right
