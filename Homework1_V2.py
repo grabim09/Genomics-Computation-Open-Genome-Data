@@ -73,7 +73,7 @@ def sequence_chart():
     while (num > 9):
 #         print( number % 10);
         num2 = num%10
-        num = mat.floor(num/10)
+        num = math.floor(num/10)
         i += 1
     if num2 <= 5:
         max_x = ((num*10)+5)*(10**(i-1))
