@@ -116,6 +116,7 @@ def fasta_parser(file):
 
 
 def main():
+    st.set_page_config(layout = "wide")
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Open Genome Data")
     st.divider()
     fasta_parser(file_reader())
