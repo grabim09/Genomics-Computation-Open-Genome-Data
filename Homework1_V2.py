@@ -105,6 +105,7 @@ def fasta_parser(file):
     if sequence_count > 1:
         col1, col2 = st.columns([1, 3])
         with col1:
+            st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
             mult = st.checkbox("Show all sequence")
         with col2:
             i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
