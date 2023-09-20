@@ -163,7 +163,7 @@ def fasta_parser(file):
     fig = plt.figure(figsize=(16,2)) 
     plt.plot(gcf)
     plt.plot(atf)
-    plot.legend()
+    plt.legend()
     st.pyplot(fig)
 
 
