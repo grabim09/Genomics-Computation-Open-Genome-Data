@@ -84,7 +84,7 @@ def count_nitrogen_base(seq_num,sequence_length,sequence_string):
 
 def sequence_chart(seq_num):
     fig = plt.figure(figsize=(16,2)) 
-    plt.barh(nbn[seq_num], nbc[seq_num])
+    plt.barh(nbn, nbc[seq_num])
     for index, value in enumerate(nbc[seq_num]):
         plt.text(value, index, str(value))
     num = max(nbc[seq_num])
