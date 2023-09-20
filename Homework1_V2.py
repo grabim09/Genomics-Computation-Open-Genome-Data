@@ -35,9 +35,9 @@ def file_reader():
 # In[10]:
 
 
-def count_nucleotide(seq_num,sequence_count,sequence_string):
+def count_nitrogen_base(seq_num,sequence_count,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
-    text = "Frequency of each nucleotide in sequence {}:".format(seq_num)
+    text = "Frequency of each nitrogen base in sequence {}:".format(seq_num)
     for i in range(4):
         nbc[i] = sequence_string.upper().count(nbn[i])
         nbf[i] = float(nbc[i]/sequence_count)
@@ -84,7 +84,7 @@ def fasta_parser(file):
         st.write("Header {}: {}".format((i+1), header[i]))
         st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
         st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
-        count_nucleotide((i+1), sequence[i])
+        count_nitrogen_base((i+1), sequence_count, sequence[i])
 
 
 # In[ ]:
