@@ -5,6 +5,7 @@
 
 
 import os
+import math
 import matplotlib.pyplot as plt
 import streamlit as st
 
@@ -102,7 +103,7 @@ def sequence_chart():
 #         print( number % 10);
         num = num / 10
         i += 1
-    st.write(floor(num))
+    st.write(math.floor(num))
     st.write(i)
 #     plt.xlim(0, 60)
     plt.xlabel('Nitrogen Base Count')
