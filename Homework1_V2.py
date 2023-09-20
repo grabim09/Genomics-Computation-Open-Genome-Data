@@ -16,7 +16,7 @@ allowed_extensions = ['fasta','fa']
 sequence_count = 0
 header = []
 sequence = []
-nbn = ['C', 'G', 'A', 'T']
+nbn = ['G', 'C', 'A', 'T']
 nbc = [0]*4
 
 
@@ -36,14 +36,19 @@ def file_reader():
 
 def count_nucleotide(seq_num,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
+    text = "Frequency of each nucleotide in sequence {}:".format(seq_num)
     for i in range(4):
         nbc[i] = sequence_string.upper().count(nbn[i])
+        text = text + " {} = {},".format(nbn[i], nbc[i])
+        if i == 3:
+            text = text + " and {} = {}".format(nbn[i], nbc[i])
+    st.write(text)
 #     C = sequence_string.upper().count('C')
 #     G = sequence_string.upper().count('G') 
 #     A = sequence_string.upper().count('A')
 #     T = sequence_string.upper().count('T')
-    st.write("Frequency of each nucleotide in sequence {}: {} = {}, {} = {}, {} = {}, {} = {}".
-             format(seq_num, nbn[0], nbc[0], nbn[1], nbc[1], nbn[2], nbc[2], nb_name[3], nb_count[3]))
+#     st.write("Frequency of each nucleotide in sequence {}: {} = {}, {} = {}, {} = {}, and {} = {}".
+#              format(seq_num, nbn[0], nbc[0], nbn[1], nbc[1], nbn[2], nbc[2], nbn[3], nbc[3]))
 
 
 # In[11]:
