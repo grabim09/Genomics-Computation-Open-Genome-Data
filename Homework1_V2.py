@@ -86,11 +86,8 @@ def fasta_parser(file):
 
 
 def sequence_chart():
-#     fig = plt.figure(figsize=(8,4))
-#     st.pyplot(fig) # instead of plt.show()
     fig = plt.figure(figsize=(8,4)) 
-#     plt.plot([1, 2, 3, 4, 5])
-    plt.bar(nbn, nbc)
+    plt.barh(nbn, nbc)
     st.pyplot(fig)
 
 
