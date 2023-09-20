@@ -156,13 +156,14 @@ def fasta_parser(file):
         l = 0 if m - left else m - left
         r = n if m + right else m + right
         c = r - l + 1
-        gcc[m] = sequence[0].upper().count(nbn[0],m,r) + sequence[0].upper().count(nbn[1],m,r)
+        gcc[m] = sequence[0].upper().count(nbn[0],l,r) + sequence[0].upper().count(nbn[1],l,r)
         gcf[m] = float((gcc[m]/c)*100)
-        atc[m] = sequence[0].upper().count(nbn[2],m,r) + sequence[0].upper().count(nbn[3],m,r)
+        atc[m] = sequence[0].upper().count(nbn[2],l,r) + sequence[0].upper().count(nbn[3],l,r)
         atf[m] = float((atc[m]/c)*100)
     fig = plt.figure(figsize=(16,2)) 
     plt.plot(gcf)
     plt.plot(atf)
+    plot.legend()
     st.pyplot(fig)
 
 
