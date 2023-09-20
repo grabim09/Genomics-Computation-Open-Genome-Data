@@ -149,13 +149,13 @@ def fasta_parser(file):
     atc = [0]*len(sequence[i])
     atf = [0]*len(sequence[i])
     win_len = 11
-    left = (win_len - 1) div 2
+    left = round((win_len - 1) / 2)
     right = left
     n = len(sequence[i])
     for m in range(n):
         l = 0 if m - left else m - left
         r = n if m + right else m + right
-        c = r-1+1
+        c = r - l + 1
         gcc[m] = sequence_string.upper().count(nbn[0],m,r) + sequence_string.upper().count(nbn[1],m,r)
         gcf[m] = float((gcc[m]/c)*100)
         atc[m] = sequence_string.upper().count(nbn[2],m,r) + sequence_string.upper().count(nbn[3],m,r)
