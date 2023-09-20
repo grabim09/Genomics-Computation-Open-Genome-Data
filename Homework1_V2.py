@@ -101,13 +101,28 @@ def fasta_parser(file):
             sequence.append(seq)
     sequence_count = count
     st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
+#   Show only one sequence
+    if sequence_count > 1:
+        i = st.slider("Choose sequence", 1, sequence_count) - 1
+    else:
+        i = 0
+    st.divider()
+    st.write("Header {}: {}".format((i+1), header[i]))
+    st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
+    st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
+#     st.write("Sequence {}: {}......{} with total length of {}".
+#              format((i+1), sequence[i][0:11], sequence[i][-12:-1], len(sequence[i])))
+    count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
+    sequence_chart()
+    
+#   Show all sequence
     for i in range(sequence_count):
-        st.divider()
+        
         st.write("Header {}: {}".format((i+1), header[i]))
-#         st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
-#         st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
-        st.write("Sequence {}: {}......{} with total length of {}".
-                 format((i+1), sequence[i][0:11], sequence[i][-12:-1], len(sequence[i])))
+        st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
+        st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
+#         st.write("Sequence {}: {}......{} with total length of {}".
+#                  format((i+1), sequence[i][0:11], sequence[i][-12:-1], len(sequence[i])))
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
 
