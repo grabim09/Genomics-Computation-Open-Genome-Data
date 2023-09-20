@@ -70,15 +70,16 @@ def sequence_chart():
         plt.text(value, index, str(value))
     num = max(nbc)
     i = 0
-    while (num > 9):
+    while (num > 10):
 #         print( number % 10);
         num2 = num%10
         num = math.floor(num/10)
         i += 1
-    if num2 <= 5:
-        max_x = ((num*10)+5)*(10**(i-1))
-    else:
-        max_x = (num+1)*(10**i)
+#     if num2 <= 5:
+#         max_x = ((num*10)+5)*(10**(i-1))
+#     else:
+#         max_x = (num+1)*(10**i)
+    max_x = ((num*10)+num2+5)*(10**(i-1))
 #     max_x = (num+1)*(10**i)
 #     st.write(math.floor(num))
 #     st.write(i)
