@@ -127,7 +127,7 @@ def fasta_parser(file):
             j = sequence_count
         else:
             i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
-            j = i
+            j = st.slider("Choose sequence", 1, sequence_count, disabled = mult)
     else:
         i = 1
         j = 1
