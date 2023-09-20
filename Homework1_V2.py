@@ -81,7 +81,7 @@ def sequence_chart():
 #         max_x = (num+1)*(10**i)
     max_x = ((num*10)+num2+5)*(10**(i-1))
 #     max_x = (num+1)*(10**i)
-    st.write(num + " " + num2 + " " + i + " " + max_x)
+    st.write("{} {} {} {}".format(num, num2, i, max_x))
     plt.xlim(0, max_x)
     plt.xlabel('Nitrogen Base Count')
     plt.ylabel('Nitrogen Base Code')
