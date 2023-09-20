@@ -20,6 +20,12 @@ sequence = []
 nbn = ['G', 'C', 'A', 'T']
 nbc = []
 nbf = []
+nbwc = []
+nbwf = []
+gcwc = []
+gcwf = []
+atwc = []
+atwf = []
 
 
 # In[9]:
