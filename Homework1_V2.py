@@ -123,14 +123,14 @@ def fasta_parser(file):
         mult = st.checkbox("Show all sequence", value = True if sequence_count == 1 else False, disabled = True if sequence_count == 1 else False)
     if sequence_count > 1:
         if mult:
-            i = 1
-            j = sequence_count
+            i = 0
+            j = sequence_count-1
         else:
             i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
             j = i
     else:
-        i = 1
-        j = 1
+        i = 0
+        j = 0
     while i <= j:
         st.divider()
         sequence_info(i)    
