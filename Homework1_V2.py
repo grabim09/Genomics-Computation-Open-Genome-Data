@@ -39,9 +39,11 @@ def count_nucleotide(seq_num,sequence_string):
     text = "Frequency of each nucleotide in sequence {}:".format(seq_num)
     for i in range(4):
         nbc[i] = sequence_string.upper().count(nbn[i])
-        text = text + " {} = {},".format(nbn[i], nbc[i])
         if i == 3:
-            text = text + " and {} = {}".format(nbn[i], nbc[i])
+            nbt = " and {} = {}".format(nbn[i], nbc[i])
+        else:
+            nbt = " {} = {},".format(nbn[i], nbc[i])
+        text = text + nbtext
     st.write(text)
 #     C = sequence_string.upper().count('C')
 #     G = sequence_string.upper().count('G') 
