@@ -161,7 +161,8 @@ def fasta_parser(file):
         atc[m] = sequence[0].upper().count(nbn[2],m,r) + sequence[0].upper().count(nbn[3],m,r)
         atf[m] = float((atc[m]/c)*100)
     fig = plt.figure(figsize=(16,2)) 
-    plt.plot(nbn, nbc)
+    plt.plot(gcf)
+    plt.plot(atf)
     st.pyplot(fig)
 
 
