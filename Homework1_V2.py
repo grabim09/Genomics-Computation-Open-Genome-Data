@@ -60,6 +60,29 @@ def count_nitrogen_base(seq_num,sequence_length,sequence_string):
 #              format(seq_num, nbn[0], nbc[0], nbn[1], nbc[1], nbn[2], nbc[2], nbn[3], nbc[3]))
 
 
+# In[ ]:
+
+
+def sequence_chart():
+    fig = plt.figure(figsize=(8,2)) 
+    plt.barh(nbn, nbc)
+    for index, value in enumerate(nbc):
+        plt.text(value, index, str(value))
+    num = max(nbc)
+    i = 0
+    while (num > 9):
+#         print( number % 10);
+        num = num / 10
+        i += 1
+    num = math.floor(num) + 1
+    st.write(math.floor(num))
+    st.write(i)
+    plt.xlim(0, num*(10**i))
+    plt.xlabel('Nitrogen Base Count')
+    plt.ylabel('Nitrogen Base Code')
+    st.pyplot(fig)
+
+
 # In[11]:
 
 
@@ -87,29 +110,7 @@ def fasta_parser(file):
         st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
         st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
-
-
-# In[ ]:
-
-
-def sequence_chart():
-    fig = plt.figure(figsize=(8,3)) 
-    plt.barh(nbn, nbc)
-    for index, value in enumerate(nbc):
-        plt.text(value, index, str(value))
-    num = max(nbc)
-    i = 0
-    while (num > 9):
-#         print( number % 10);
-        num = num / 10
-        i += 1
-    num = math.floor(num) + 1
-    st.write(math.floor(num))
-    st.write(i)
-    plt.xlim(0, num*(10**i))
-    plt.xlabel('Nitrogen Base Count')
-    plt.ylabel('Nitrogen Base Code')
-    st.pyplot(fig)
+        sequence_chart()
 
 
 # In[12]:
@@ -119,7 +120,7 @@ def main():
     st.title("07311940000046_Agra Bima Yuda_Genomics Computation_Open Genome Data")
     st.divider()
     fasta_parser(file_reader())
-    sequence_chart()
+#     sequence_chart()
     
 if __name__ == "__main__":
     main()
