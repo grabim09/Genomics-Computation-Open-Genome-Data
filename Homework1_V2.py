@@ -37,7 +37,8 @@ def file_reader():
 
 def count_nitrogen_base(seq_num,sequence_length,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
-    text = "Frequency of each nitrogen base in sequence {}:".format(seq_num)
+#     text = "Frequency of each nitrogen base in sequence {}:".format(seq_num)
+    text = "Frequency of each nitrogen base:"
     for i in range(4):
         nbc[i] = sequence_string.upper().count(nbn[i])
         nbf[i] = float(nbc[i]/sequence_length)
@@ -93,6 +94,8 @@ def fasta_parser(file):
 def sequence_chart():
     fig = plt.figure(figsize=(8,3)) 
     plt.barh(nbn, nbc)
+    for index, value in enumerate(nbc):
+        plt.text(value, index, str(value))
     plt.xlabel('Nitrogen Base Count')
     plt.ylabel('Nitrogen Base Code')
     st.pyplot(fig)
