@@ -136,12 +136,12 @@ def window_frequency(seq_num):
 #             atf[m+left] = float((atc[m]/c)*100)
             m += 1
     else:
-        cnt = r - l + 1
         for m in range(n):
             l = 0 if m - left < 0 else m - left
             r = n if m + right > n-1 else m + right
+            cnt = r - l + 1
             for i in range(4):
-                c[i] = sequence[seq_num].upper().count(nbn[0],l,r)
+                c[i] = sequence[seq_num].upper().count(nbn[i],l,r)
                 f[i] = float((c[i]/cnt)*100)
             wc.append(c)
             wf.append(f)
