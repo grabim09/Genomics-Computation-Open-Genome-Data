@@ -60,6 +60,15 @@ def count_nitrogen_base(seq_num,sequence_length,sequence_string):
 # In[ ]:
 
 
+def sequence_info(seq_num):
+    st.write("Header {}: {}".format((seq_num+1), header[seq_num]))
+    st.write("Sequence {}: {}......{}".format((seq_num+1), sequence[seq_num][0:11], sequence[seq_num][-12:-1]))
+    st.write("Sequence {} Length: {}".format((seq_num+1), len(sequence[seq_num])))
+
+
+# In[ ]:
+
+
 def sequence_chart():
     fig = plt.figure(figsize=(16,2)) 
     plt.barh(nbn, nbc)
@@ -112,35 +121,19 @@ def fasta_parser(file):
         st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
     with col2:
         mult = st.checkbox("Show all sequence", value = True if sequence_count == 1 else False, disabled = True if sequence_count == 1 else False)
-    if mult:
-        i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
+    if sequence_count > 1:
+        if mult:
+            i = 1
+            j = sequence_count
+        else:
+            i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
+            j = i
     else:
         i = 1
-#     if sequence_count > 1:
-#         col1, col2 = st.columns([1, 3])
-#         with col1:
-#             mult = st.checkbox("Show all sequence", value = False)
-#         with col2:
-#             i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
-#     else:
-#         i = 0
-    st.divider()
-    st.write("Header {}: {}".format((i+1), header[i]))
-    st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
-    st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
-#     st.write("Sequence {}: {}......{} with total length of {}".
-#              format((i+1), sequence[i][0:11], sequence[i][-12:-1], len(sequence[i])))
-    count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
-    sequence_chart()
-    
-#   Show all sequence
-    for i in range(sequence_count):
+        j = 1
+    for i in range(j):
         st.divider()
-        st.write("Header {}: {}".format((i+1), header[i]))
-        st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
-        st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
-#         st.write("Sequence {}: {}......{} with total length of {}".
-#                  format((i+1), sequence[i][0:11], sequence[i][-12:-1], len(sequence[i])))
+        sequence_info(i)    
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
 
