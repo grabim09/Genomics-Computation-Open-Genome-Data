@@ -107,7 +107,7 @@ def fasta_parser(file):
 #     with col2:
 #         i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
 #   Show only one sequence
-    col1, col2 = st.column([3,1])
+    col1, col2 = st.columns([3,1])
     with col1:
         st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
     with col2:
