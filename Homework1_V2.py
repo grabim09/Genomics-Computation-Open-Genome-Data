@@ -96,6 +96,15 @@ def sequence_chart():
     plt.barh(nbn, nbc)
     for index, value in enumerate(nbc):
         plt.text(value, index, str(value))
+    num = max(nbc)
+    i = 0
+    while (num > 9):
+#         print( number % 10);
+        num = num / 10
+        i += 1
+    st.write(num)
+    st.write(i)
+    plt.xlim(0, 60)
     plt.xlabel('Nitrogen Base Count')
     plt.ylabel('Nitrogen Base Code')
     st.pyplot(fig)
