@@ -153,8 +153,8 @@ def fasta_parser(file):
     right = left
     n = len(sequence[0])
     for m in range(n):
-        l = 0 if m - left else m - left
-        r = n if m + right else m + right
+        l = 0 if m - left < 0 else m - left
+        r = n if m + right > n-1 else m + right
         c = r - l + 1
         gcc[m] = sequence[0].upper().count(nbn[0],l,r) + sequence[0].upper().count(nbn[1],l,r)
         gcf[m] = float((gcc[m]/c)*100)
