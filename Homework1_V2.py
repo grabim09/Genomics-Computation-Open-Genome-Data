@@ -16,6 +16,8 @@ allowed_extensions = ['fasta','fa']
 sequence_count = 0
 header = []
 sequence = []
+nbn = ['C', 'G', 'A', 'T']
+nbc = [0]*4
 
 
 # In[9]:
@@ -34,11 +36,14 @@ def file_reader():
 
 def count_nucleotide(seq_num,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
-    c = sequence_string.upper().count('C')
-    g = sequence_string.upper().count('G') 
-    a = sequence_string.upper().count('A')
-    t = sequence_string.upper().count('T')
-    st.write("Frequency of each nucleotide in sequence {}: C = {}, G = {}, A = {}, T = {}".format(seq_num, c, g, a, t))
+    for i in range(4):
+        nbc[i] = sequence_string.upper().count(nbn[i])
+#     C = sequence_string.upper().count('C')
+#     G = sequence_string.upper().count('G') 
+#     A = sequence_string.upper().count('A')
+#     T = sequence_string.upper().count('T')
+    st.write("Frequency of each nucleotide in sequence {}: {} = {}, {} = {}, {} = {}, {} = {}".
+             format(seq_num, nbn[0], nbc[0], nbn[1], nbc[1], nbn[2], nbc[2], nb_name[3], nb_count[3]))
 
 
 # In[11]:
@@ -77,7 +82,8 @@ def sequence_chart():
 #     fig = plt.figure(figsize=(8,4))
 #     st.pyplot(fig) # instead of plt.show()
     fig = plt.figure(figsize=(8,4)) 
-    plt.plot([1, 2, 3, 4, 5]) 
+#     plt.plot([1, 2, 3, 4, 5])
+    plt.bar(nbn)
     st.pyplot(fig)
 
 
