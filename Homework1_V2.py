@@ -165,6 +165,7 @@ def fasta_parser(file):
     plt.plot(atf)
     plt.legend()
     st.pyplot(fig)
+    print(gcf)
 
 
 # In[12]:
