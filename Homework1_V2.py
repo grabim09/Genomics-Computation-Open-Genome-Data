@@ -32,6 +32,15 @@ def file_reader():
     return chosen_file
 
 
+# In[ ]:
+
+
+def sequence_info(seq_num):
+    st.write("Header {}: {}".format((seq_num+1), header[seq_num]))
+    st.write("Sequence {}: {}......{}".format((seq_num+1), sequence[seq_num][0:11], sequence[seq_num][-12:-1]))
+    st.write("Sequence {} Length: {}".format((seq_num+1), len(sequence[seq_num])))
+
+
 # In[10]:
 
 
@@ -41,7 +50,7 @@ def count_nitrogen_base(seq_num,sequence_length,sequence_string):
     for i in range(4):
 #         will count upper and lower case sequences, if do not want lower case remove .upper()
         nbc[i] = sequence_string.upper().count(nbn[i])
-        nbf[i] = float(nbc[i]/sequence_length)
+        nbf[i] = float((nbc[i]/sequence_length)*100)
         nbt = "{} = {} ({:.2f}%)".format(nbn[i], nbc[i], nbf[i])
         if i == 3:
             nbt = " and " + nbt
@@ -55,15 +64,6 @@ def count_nitrogen_base(seq_num,sequence_length,sequence_string):
 #     T = sequence_string.upper().count('T')
 #     st.write("Frequency of each nucleotide in sequence {}: {} = {}, {} = {}, {} = {}, and {} = {}".
 #              format(seq_num, nbn[0], nbc[0], nbn[1], nbc[1], nbn[2], nbc[2], nbn[3], nbc[3]))
-
-
-# In[ ]:
-
-
-def sequence_info(seq_num):
-    st.write("Header {}: {}".format((seq_num+1), header[seq_num]))
-    st.write("Sequence {}: {}......{}".format((seq_num+1), sequence[seq_num][0:11], sequence[seq_num][-12:-1]))
-    st.write("Sequence {} Length: {}".format((seq_num+1), len(sequence[seq_num])))
 
 
 # In[ ]:
@@ -89,6 +89,17 @@ def sequence_chart():
     st.pyplot(fig)
 
 
+# In[ ]:
+
+
+def window_frequency():
+    win_len = 11
+    gcc = [0]*4
+    gcf = [0]*4
+    atc = [0]*4
+    atf = [0]*4
+
+
 # In[11]:
 
 
@@ -109,13 +120,6 @@ def fasta_parser(file):
         if seq:
             sequence.append(seq)
     sequence_count = count
-#     col1, col2 = st.columns([2, 3])
-#     with col1:
-#         st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
-#         mult = st.checkbox("Show all sequence", value = False)
-#     with col2:
-#         i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
-#   Show only one sequence
     col1, col2 = st.columns([3,1])
     with col1:
         st.write("Sequence amount inside the chosen file: " + str(sequence_count) + " Sequence")
@@ -126,17 +130,39 @@ def fasta_parser(file):
             i = 0
             j = sequence_count-1
         else:
-            i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
+            i = st.slider("Choose sequence", 1, sequence_count, value = 1, disabled = mult) - 1
             j = i
     else:
         i = 0
         j = 0
+    window = st.radio("Choose window type",["Quarter", "Percentage", "Documentary :movie_camera:"],
+    captions = ["Laugh out loud.", "Get the popcorn.", "Never stop learning."])
     while i <= j:
         st.divider()
         sequence_info(i)    
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
         i += 1
+    nbwc = [0]*len(sequence[i])
+    gcc = [0]*len(sequence[i])
+    gcf = [0]*len(sequence[i])
+    atc = [0]*len(sequence[i])
+    atf = [0]*len(sequence[i])
+    win_len = 11
+    left = (win_len - 1) dif 2
+    right = left
+    n = len(sequence[i])
+    for m in range(n):
+        l = 0 if m - left else m - left
+        r = n if m + right else m + right
+        c = r-1+1
+        gcc[m] = sequence_string.upper().count(nbn[0],m,r) + sequence_string.upper().count(nbn[1],m,r)
+        gcf[m] = float((gcc[m]/c)*100)
+        atc[m] = sequence_string.upper().count(nbn[2],m,r) + sequence_string.upper().count(nbn[3],m,r)
+        atf[m] = float((atc[m]/c)*100)
+    fig = plt.figure(figsize=(16,2)) 
+    plt.plot(nbn, nbc)
+    st.pyplot(fig)
 
 
 # In[12]:
