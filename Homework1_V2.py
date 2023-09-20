@@ -127,11 +127,11 @@ def fasta_parser(file):
             j = sequence_count
         else:
             i = st.slider("Choose sequence", 1, sequence_count, disabled = mult) - 1
-            j = st.slider("Choose sequence", 1, sequence_count, disabled = mult)
+            j = i
     else:
         i = 1
         j = 1
-    for i in range(j):
+    while i <= j:
         st.divider()
         sequence_info(i)    
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
