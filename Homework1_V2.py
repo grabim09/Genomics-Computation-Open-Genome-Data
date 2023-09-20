@@ -39,17 +39,15 @@ def file_reader():
 def count_nitrogen_base(seq_num,sequence_length,sequence_string):
     # will count upper and lower case sequences, if do not want lower case remove .upper()
 #     text = "Frequency of each nitrogen base in sequence {}:".format(seq_num)
-    text = "Frequency of each nitrogen base:"
+    text = "Nitrogen base frequency:"
     for i in range(4):
         nbc[i] = sequence_string.upper().count(nbn[i])
         nbf[i] = float(nbc[i]/sequence_length)
         nbt = "{} = {} ({:.2f}%)".format(nbn[i], nbc[i], nbf[i])
         if i == 3:
             nbt = " and " + nbt
-#             nbt = " and {} = {}".format(nbn[i], nbc[i])
         else:
             nbt = " " + nbt + ","
-#             nbt = " {} = {},".format(nbn[i], nbc[i])
         text = text + nbt
     st.write(text)
 #     C = sequence_string.upper().count('C')
@@ -71,17 +69,11 @@ def sequence_chart():
     num = max(nbc)
     i = 0
     while (num > 10):
-#         print( number % 10);
         num2 = num%10
         num = math.floor(num/10)
         i += 1
-#     if num2 <= 5:
-#         max_x = ((num*10)+5)*(10**(i-1))
-#     else:
-#         max_x = (num+1)*(10**i)
-    max_x = ((num*10)+num2+5)*(10**(i-1))
-#     max_x = (num+1)*(10**i)
-    st.write("{} {} {} {}".format(num, num2, i, max_x))
+    max_x = ((num*10)+num2+3)*(10**(i-1))
+#     st.write("{} {} {} {}".format(num, num2, i, max_x))
     plt.xlim(0, max_x)
     plt.xlabel('Nitrogen Base Count')
     plt.ylabel('Nitrogen Base Code')
@@ -112,8 +104,10 @@ def fasta_parser(file):
     for i in range(sequence_count):
         st.divider()
         st.write("Header {}: {}".format((i+1), header[i]))
-        st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
-        st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
+#         st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
+#         st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
+        st.write("Sequence {}: {}......{} with length of {}".
+                 format((i+1), sequence[i][0:11], sequence[i][-12:-1]), len(sequence[i]))
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
 
