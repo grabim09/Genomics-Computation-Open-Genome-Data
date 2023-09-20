@@ -102,9 +102,9 @@ def sequence_chart():
 #         print( number % 10);
         num = num / 10
         i += 1
-    st.write(num)
+    st.write(floor(num))
     st.write(i)
-    plt.xlim(0, 60)
+#     plt.xlim(0, 60)
     plt.xlabel('Nitrogen Base Count')
     plt.ylabel('Nitrogen Base Code')
     st.pyplot(fig)
