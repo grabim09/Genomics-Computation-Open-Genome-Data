@@ -107,7 +107,7 @@ def fasta_parser(file):
 #         st.write("Sequence {}: {}......{}".format((i+1), sequence[i][0:11], sequence[i][-12:-1]))
 #         st.write("Sequence {} Length: {}".format((i+1), len(sequence[i])))
         st.write("Sequence {}: {}......{} with length of {}".
-                 format((i+1), sequence[i][0:11], sequence[i][-12:-1]), len(sequence[i]))
+                 format((i+1), sequence[i][0:11], sequence[i][-12:-1], len(sequence[i])))
         count_nitrogen_base((i+1), len(sequence[i]), sequence[i])
         sequence_chart()
 
