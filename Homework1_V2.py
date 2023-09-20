@@ -43,7 +43,7 @@ def count_nucleotide(seq_num,sequence_string):
             nbt = " and {} = {}".format(nbn[i], nbc[i])
         else:
             nbt = " {} = {},".format(nbn[i], nbc[i])
-        text = text + nbtext
+        text = text + nbt
     st.write(text)
 #     C = sequence_string.upper().count('C')
 #     G = sequence_string.upper().count('G') 
@@ -90,7 +90,7 @@ def sequence_chart():
 #     st.pyplot(fig) # instead of plt.show()
     fig = plt.figure(figsize=(8,4)) 
 #     plt.plot([1, 2, 3, 4, 5])
-    plt.bar(nbn)
+    plt.bar(nbn, nbc)
     st.pyplot(fig)
 
 
