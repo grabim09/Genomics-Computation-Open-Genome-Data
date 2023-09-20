@@ -160,7 +160,7 @@ def fasta_parser(file):
         gcf[m] = float((gcc[m]/c)*100)
         atc[m] = sequence[0].upper().count(nbn[2],l,r) + sequence[0].upper().count(nbn[3],l,r)
         atf[m] = float((atc[m]/c)*100)
-    fig = plt.figure(figsize=(16,2)) 
+    fig = plt.figure(figsize=(16,4)) 
     plt.plot(gcf)
     plt.plot(atf)
     plt.legend()
