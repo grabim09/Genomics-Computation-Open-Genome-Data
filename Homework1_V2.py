@@ -221,7 +221,7 @@ def fasta_parser(file):
         sequence_info(i)    
         count_nitrogen_base(i, len(sequence[i]), sequence[i])
         sequence_chart(i)
-#         window_frequency(i)
+        window_frequency(i)
         i += 1
 #     nbwc = [0]*len(sequence[0])
 #     gcc = [0]*len(sequence[0])
