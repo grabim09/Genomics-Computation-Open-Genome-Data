@@ -110,8 +110,6 @@ def density(seq_num):
     left = round((win_len - 1) / 2)
     right = left
     n = len(sequence[seq_num])
-    c = [0]*4
-    f = [0]*4
     wc = [[0]*n]*4
     wf = [[0]*n]*4
 #     wc = [0]*n
@@ -141,6 +139,8 @@ def density(seq_num):
             m += 1
     else:
         for m in range(n):
+            c = [0]*4
+            f = [0]*4
             l = 0 if m - left < 0 else m - left
             r = n if m + right > n-1 else m + right
             cnt = r - l + 1
@@ -149,16 +149,10 @@ def density(seq_num):
                 f[i] = float((c[i]/cnt)*100)
                 wc[i][m] = sequence[seq_num].upper().count(nbn[i],l,r)
                 wf[i][m] = float((wc[i][m]/cnt)*100)
-#             wc.append(c)
-#             wf.append(f)
             wgcc[m] = wc[0][m] + wc[1][m]
             wgcf[m] = wf[0][m] + wf[1][m]
             watc[m] = wc[2][m] + wc[3][m]
             watf[m] = wf[2][m] + wf[3][m]
-#             wgcc.append(c[0] + c[1])
-#             wgcf.append(f[0] + f[1])
-#             watc.append(c[2] + c[3])
-#             watf.append(f[2] + f[3])
         nbwc.append(wc)
         nbwf.append(wf)
         gcwc.append(wgcc)
@@ -169,25 +163,32 @@ def density(seq_num):
 #             gcf[m] = float((gcc[m]/cnt)*100)
 #             atc[m] = sequence[0].upper().count(nbn[2],l,r) + sequence[0].upper().count(nbn[3],l,r)
 #             atf[m] = float((atc[m]/cnt)*100)
-    col1, col2 = st.columns(2)
-    with col1:
-        fig = plt.figure(figsize=(8,2))
-        for i in range(4):
-            plt.plot(nbwf[seq_num][i], label = nbn[i])
-#         plt.plot(nbwf[seq_num][], label = "GC Content")
+    fig = plt.figure(figsize=(8,2))
+    for i in range(4):
+        plt.plot(wf[i], label = nbn[i])
+    plt.legend()
+    plt.xlabel("Position")
+    plt.ylabel("Content (%)")
+    st.pyplot(fig)
+#     col1, col2 = st.columns(2)
+#     with col1:
+#         fig = plt.figure(figsize=(8,2))
+#         for i in range(4):
+#             plt.plot(nbwf[seq_num][i], label = nbn[i])
+# #         plt.plot(nbwf[seq_num][], label = "GC Content")
+# #         plt.plot(atwf[seq_num], label = "AT Content")
+#         plt.legend()
+#         plt.xlabel("Position")
+#         plt.ylabel("Content (%)")
+#         st.pyplot(fig)
+#     with col2:
+#         fig = plt.figure(figsize=(8,2)) 
+#         plt.plot(gcwf[seq_num], label = "GC Content")
 #         plt.plot(atwf[seq_num], label = "AT Content")
-        plt.legend()
-        plt.xlabel("Position")
-        plt.ylabel("Content (%)")
-        st.pyplot(fig)
-    with col2:
-        fig = plt.figure(figsize=(8,2)) 
-        plt.plot(gcwf[seq_num], label = "GC Content")
-        plt.plot(atwf[seq_num], label = "AT Content")
-        plt.legend()
-        plt.xlabel("Position")
-        plt.ylabel("Content (%)")
-        st.pyplot(fig)
+#         plt.legend()
+#         plt.xlabel("Position")
+#         plt.ylabel("Content (%)")
+#         st.pyplot(fig)
 
 
 # In[11]:
