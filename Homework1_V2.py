@@ -139,26 +139,22 @@ def density(seq_num):
             m += 1
     else:
         for m in range(n):
-            c = [0]*4
-            f = [0]*4
             l = 0 if m - left < 0 else m - left
             r = n if m + right > n-1 else m + right
             cnt = r - l + 1
             for i in range(4):
-                c[i] = sequence[seq_num].upper().count(nbn[i],l,r)
-                f[i] = float((c[i]/cnt)*100)
                 wc[i][m] = sequence[seq_num].upper().count(nbn[i],l,r)
                 wf[i][m] = float((wc[i][m]/cnt)*100)
-            wgcc[m] = wc[0][m] + wc[1][m]
-            wgcf[m] = wf[0][m] + wf[1][m]
-            watc[m] = wc[2][m] + wc[3][m]
-            watf[m] = wf[2][m] + wf[3][m]
-        nbwc.append(wc)
-        nbwf.append(wf)
-        gcwc.append(wgcc)
-        gcwf.append(wgcf)
-        atwc.append(watc)
-        atwf.append(watf)
+#             wgcc[m] = wc[0][m] + wc[1][m]
+#             wgcf[m] = wf[0][m] + wf[1][m]
+#             watc[m] = wc[2][m] + wc[3][m]
+#             watf[m] = wf[2][m] + wf[3][m]
+#         nbwc.append(wc)
+#         nbwf.append(wf)
+#         gcwc.append(wgcc)
+#         gcwf.append(wgcf)
+#         atwc.append(watc)
+#         atwf.append(watf)
 #             gcc[m] = sequence[0].upper().count(nbn[0],l,r) + sequence[0].upper().count(nbn[1],l,r)
 #             gcf[m] = float((gcc[m]/cnt)*100)
 #             atc[m] = sequence[0].upper().count(nbn[2],l,r) + sequence[0].upper().count(nbn[3],l,r)
