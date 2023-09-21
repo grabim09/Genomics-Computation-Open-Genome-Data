@@ -105,7 +105,7 @@ def sequence_chart(seq_num):
 # In[ ]:
 
 
-def window_frequency(seq_num):
+def density(seq_num):
     win_len = 501
     left = round((win_len - 1) / 2)
     right = left
@@ -161,11 +161,25 @@ def window_frequency(seq_num):
 #             gcf[m] = float((gcc[m]/cnt)*100)
 #             atc[m] = sequence[0].upper().count(nbn[2],l,r) + sequence[0].upper().count(nbn[3],l,r)
 #             atf[m] = float((atc[m]/cnt)*100)
-    fig = plt.figure(figsize=(16,2)) 
-    plt.plot(gcwf[seq_num], label = "GC Content")
-    plt.plot(atwf[seq_num], label = "AT Content")
-    plt.legend()
-    st.pyplot(fig)
+    col1, col2 = st.columns(2)
+    with col1:
+        fig = plt.figure(figsize=(8,2))
+        for i in range(4):
+            plt.plot(nbwf[seq_num][i], label = nbn[i])
+#         plt.plot(nbwf[seq_num][], label = "GC Content")
+#         plt.plot(atwf[seq_num], label = "AT Content")
+        plt.legend()
+        plt.xlabel("Position")
+        plt.ylabel("Content (%)")
+        st.pyplot(fig)
+    with col2:
+        fig = plt.figure(figsize=(8,2)) 
+        plt.plot(gcwf[seq_num], label = "GC Content")
+        plt.plot(atwf[seq_num], label = "AT Content")
+        plt.legend()
+        plt.xlabel("Position")
+        plt.ylabel("Content (%)")
+        st.pyplot(fig)
 
 
 # In[11]:
@@ -220,11 +234,8 @@ def fasta_parser(file):
         st.divider()
         sequence_info(i)    
         count_nitrogen_base(i, len(sequence[i]), sequence[i])
-        col3, col4 = st.columns(2)
-        with col3:
-            sequence_chart(i)
-        with col4:
-            window_frequency(i)
+        sequence_chart(i)
+        density(i)
         i += 1
 #     nbwc = [0]*len(sequence[0])
 #     gcc = [0]*len(sequence[0])
