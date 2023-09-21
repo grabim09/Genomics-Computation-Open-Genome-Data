@@ -161,7 +161,7 @@ def window_frequency(seq_num):
 #             gcf[m] = float((gcc[m]/cnt)*100)
 #             atc[m] = sequence[0].upper().count(nbn[2],l,r) + sequence[0].upper().count(nbn[3],l,r)
 #             atf[m] = float((atc[m]/cnt)*100)
-    fig = plt.figure(figsize=(16,4)) 
+    fig = plt.figure(figsize=(16,2)) 
     plt.plot(gcwf[seq_num], label = "GC Content")
     plt.plot(atwf[seq_num], label = "AT Content")
     plt.legend()
@@ -220,8 +220,11 @@ def fasta_parser(file):
         st.divider()
         sequence_info(i)    
         count_nitrogen_base(i, len(sequence[i]), sequence[i])
-        sequence_chart(i)
-        window_frequency(i)
+        col3, col4 = st.columns(2)
+        with col3:
+            sequence_chart(i)
+        with col4:
+            window_frequency(i)
         i += 1
 #     nbwc = [0]*len(sequence[0])
 #     gcc = [0]*len(sequence[0])
