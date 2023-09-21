@@ -112,12 +112,14 @@ def density(seq_num):
     n = len(sequence[seq_num])
     c = [0]*4
     f = [0]*4
-    wc = []
-    wf = []
-    wgcc = []
-    wgcf = []
-    watc = []
-    watf = []
+    wc = [[0]*n]*4
+    wf = [[0]*n]*4
+#     wc = [0]*n
+#     wf = [0]*n
+    wgcc = [0]*n
+    wgcf = [0]*n
+    watc = [0]*n
+    watf = [0]*n
     method = 1
     if method == 0:
         cnt = win_len
@@ -145,12 +147,18 @@ def density(seq_num):
             for i in range(4):
                 c[i] = sequence[seq_num].upper().count(nbn[i],l,r)
                 f[i] = float((c[i]/cnt)*100)
-            wc.append(c)
-            wf.append(f)
-            wgcc.append(c[0] + c[1])
-            wgcf.append(f[0] + f[1])
-            watc.append(c[2] + c[3])
-            watf.append(f[2] + f[3])
+                wc[i][m] = sequence[seq_num].upper().count(nbn[i],l,r)
+                wf[i][m] = float((wc[i][m]/cnt)*100)
+#             wc.append(c)
+#             wf.append(f)
+            wgcc[m] = wc[0][m] + wc[1][m]
+            wgcf[m] = wf[0][m] + wf[1][m]
+            watc[m] = wc[2][m] + wc[3][m]
+            watf[m] = wf[2][m] + wf[3][m]
+#             wgcc.append(c[0] + c[1])
+#             wgcf.append(f[0] + f[1])
+#             watc.append(c[2] + c[3])
+#             watf.append(f[2] + f[3])
         nbwc.append(wc)
         nbwf.append(wf)
         gcwc.append(wgcc)
