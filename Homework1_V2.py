@@ -164,8 +164,10 @@ def density(seq_num):
 #             atc[m] = sequence[0].upper().count(nbn[2],l,r) + sequence[0].upper().count(nbn[3],l,r)
 #             atf[m] = float((atc[m]/cnt)*100)
     fig = plt.figure(figsize=(8,2))
-    for i in range(4):
-        plt.plot(wf[i], label = nbn[i])
+    plt.plot(wf[0], label = nbn[0])
+    plt.plot(wf[1], label = nbn[1])
+    plt.plot(wf[2], label = nbn[2])
+    plt.plot(wf[3], label = nbn[3])
     plt.legend()
     plt.xlabel("Position")
     plt.ylabel("Content (%)")
